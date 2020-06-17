@@ -14,37 +14,71 @@ public class ShortestPath {
 	
 	public String nodesInShortestPath(String start, String end) {
 		// question 5
-		
+
 		Node s = nodes.get(start);
+
 		Node e = nodes.get(end);
 		
 		return ("[]");
 	}
-	
+
 	public int shortestPath(String start, String end) {
 		// question 4
-		
+		// start node = B
 		Node s = nodes.get(start);
+		// end node = m
 		Node e = nodes.get(end);
-		
-		PriorityQueue queue = new PriorityQueue();
-		queue.add(0, s);
 
-		s.setShortestDistance(0);
+		PriorityQueue queue = new PriorityQueue();
+
+		s.setAsStartNode();
+
+		queue.add(0, s);
+		//queue.add(0, e);
 
 		while (!queue.toString().equals("(empty)")){
+
 			Node currentNode = queue.getNextHighestPriorityNode();
+			System.out.println(currentNode);
+
+			//System.out.println(currentNode.getShortestDistance());
 			if (currentNode == e){
 				return e.getShortestDistance();
 			}
+
 			else {
-				for(Edge e : currentNode);
 
+				Edge[] toReview;
+				toReview = currentNode.getEdges().getArrofEdges();
+
+				for(Edge ed: toReview) {
+
+						Node n = ed.getEndNode();
+
+						//System.out.println(n.getShortestDistance());
+						if (!n.hasBeenVisited()) {
+
+							int distance = ed.getDistance();
+							int currentDistance = ed.getStartNode().getShortestDistance();
+							int currentShortestDistance = distance + currentDistance;
+
+							if (currentShortestDistance < n.getShortestDistance()) {
+								n.setShortestDistance(currentShortestDistance);
+							}
+							queue.add(n.getShortestDistance(), n);
+
+						}
+
+
+
+					currentNode.setVisited();
+				}
+				}
 			}
-		}
 
-		s.setAsStartNode();
-		queue.add(0, s);
+
+		//s.setAsStartNode();
+		//queue.add(0, s);
 		
 		return 0;
 	}

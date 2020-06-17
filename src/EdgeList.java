@@ -20,9 +20,24 @@ public class EdgeList {
 		}
 		return edges[index];
 	}
-	
+	public Edge[] getArrofEdges(){
+		Edge[] toReturn = new Edge[currentLocation];
+
+		for(int i=0; i<edges.length;i++) {
+			if (edges[i] != null) {
+				toReturn[i] = edges[i];
+			}
+		}
+
+		return toReturn;
+	}
+
+	public void setCurrentLocation(int x){
+		currentLocation = x;
+	}
 	public void add(Edge e) {
 
+		//static int count = 1;
 		int length = edges.length;
 		int ind = 0;
 		boolean incneeded = true;
@@ -30,6 +45,8 @@ public class EdgeList {
 		for (ind = 0 ; ind < length ; ind++){
 			if(edges[ind] == null) {
 				edges[ind] = e;
+				Edge toUpdate = edges[ind];
+				currentLocation++;
 				incneeded = false;
 				break;
 			}
@@ -37,6 +54,7 @@ public class EdgeList {
 		if(incneeded){
 			increaseSizeOfArray();
 			edges[ind] = e;
+			currentLocation++;
 
 		}
 

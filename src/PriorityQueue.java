@@ -21,7 +21,10 @@ public class PriorityQueue {
 			return null;
 		}
 		else {
+
 			return root.getLastNode();
+
+
 		}
 	}
 	

@@ -18,6 +18,7 @@ public class Node{
 	public void addEdge(Edge e) {
 		edges.add(e);
 	}
+
 	
 	public int getShortestDistance() {
 		return shortestDistance;
