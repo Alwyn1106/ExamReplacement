@@ -87,7 +87,7 @@ public class QNode{
 
 			}
 		}
-
+//
 		else if(root > v && getPrevious() == null ) {
 			setPrevious(n);
 			n.next = this;
