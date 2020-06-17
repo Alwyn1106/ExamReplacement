@@ -36,26 +36,21 @@ public class ShortestPath {
 		queue.add(0, s);
 		//queue.add(0, e);
 
-		while (!queue.toString().equals("(empty)")){
+		while (!queue.toString().equals("(empty)")) {
 
-			Node currentNode = queue.getNextHighestPriorityNode();
-			System.out.println(currentNode);
+			Node currentNode = queue.getLowestPriorityNode();
 
-			//System.out.println(currentNode.getShortestDistance());
-			if (currentNode == e){
-				return e.getShortestDistance();
-			}
+				if (currentNode == e) {
+					return e.getShortestDistance();
+				} else {
 
-			else {
+					Edge[] toReview;
+					toReview = currentNode.getEdges().getArrofEdges();
 
-				Edge[] toReview;
-				toReview = currentNode.getEdges().getArrofEdges();
-
-				for(Edge ed: toReview) {
+					for (Edge ed : toReview) {
 
 						Node n = ed.getEndNode();
 
-						//System.out.println(n.getShortestDistance());
 						if (!n.hasBeenVisited()) {
 
 							int distance = ed.getDistance();
@@ -70,11 +65,11 @@ public class ShortestPath {
 						}
 
 
+						currentNode.setVisited();
+					}
+				}
 
-					currentNode.setVisited();
-				}
-				}
-			}
+		}
 
 
 		//s.setAsStartNode();

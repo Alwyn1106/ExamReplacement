@@ -15,6 +15,14 @@ public class PriorityQueue {
 
 	}
 
+	public Node getLowestPriorityNode() {
+		if(root == null){
+			return null;
+		}
+		else {
+			return root.getFirstNode();
+		}
+	}
 
 	public Node getNextHighestPriorityNode() {
 		if(root == null){

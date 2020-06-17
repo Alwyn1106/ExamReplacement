@@ -26,10 +26,26 @@ public class QNode{
 		return node;
 	}
 
+
+	public Node getFirstNode(){
+		QNode o = this;
+
+		while(o.previous!= null) {
+			o = o.previous;
+		}
+		while(o.node.hasBeenVisited()){
+			o = o.next;
+		}
+		return o.node;
+	}
+
 	public Node getLastNode(){
 		QNode o = this;
 		while(o.next != null){
 			o = o.next;
+		}
+		while(o.node.hasBeenVisited()){
+			o = o.previous;
 		}
 		return o.node;
 

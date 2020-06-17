@@ -97,7 +97,7 @@ public class Main {
 		try {
 			ShortestPath sp = init("graph.txt");
 			int shortest = sp.shortestPath("B", "M");
-			System.out.println(shortest);
+			//System.out.println(shortest);
 			if(shortest == 8) {
 				return "Shortest Path Test Passed";
 			}
